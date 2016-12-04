@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title th:text="${name}">Etusivu</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css" />
+
+    </head>
+    <body>
+        <h2>Linkkisi</h2>
+
+        <section th:each="linkki : ${linkit}">
+            <a th:href="${linkki.url}"><h3 th:text="${linkki.nimi}">nimi</h3></a>
+            <span th:text="${linkki.kuvaus}">kuvaus</span>
+            <form th:action="@{/{nimi}/delete/{linkki}(linkki=${linkki.id}, nimi=${name})}" th:method="DELETE">
+                <input type="submit" value="Poista"></input>
+            </form>
+        </section>
+
+        <h2>Lisää linkki</h2>
+
+        <form th:action="@{/{nimi}/add(nimi=${name})}" method="POST">
+            <input type="text" value="Linkin nimi" name="nimi1"></input>
+            <input type="text" value="Linkin url" name="url"></input>
+            <input type="text" value="Kuvaus" name="kuvaus"></input>
+            <input type="submit" value="Lisää"></input>
+        </form>
+
+
+        <a href="/">Takaisin etusivulle</a>
+    </body>
+</html>

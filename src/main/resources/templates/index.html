@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Etusivu</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css" />
+        <style>
+            body {
+                width: 100%;
+                height: 100%;
+            }
+
+            html {
+                height: 100%;
+                width: 100%;
+            }
+
+            .header-container {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .header {
+                font-family: Helvetica;
+            }
+
+            .header-label {
+                font-family: Helvetica;
+                font-size: 1em;
+            }
+
+            .header-url {
+                background-color: #d3d3d3;
+                border-radius: 3px;
+                border: 1px solid black;
+                padding: 2px;
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .custom-restricted {
+                height: 250px;
+                width: 500px;
+                border: 1px solid gray;
+                border-radius: 4px;
+            }
+        </style>
+
+
+    </head>
+
+    <body>
+        <div class="header-container">
+            <h1 class="header">Janin Linkkilaatikko</h1>
+            <h2 class="header-label">Siirry linkkilaatikkoosi kirjoittamalla <span class="header-url">/linkki_laatikkosi_nimi</span> osoiteriville</h2>
+
+
+            <h2>Sivut</h2>
+
+            <div class="pure-menu pure-menu-scrollable custom-restricted">
+                <a href="#" class="pure-menu-link pure-menu-heading">Etusivu</a>
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item" th:each="sivu : ${sivut}"><a th:href="${sivu.url}" class="pure-menu-link" th:text="${sivu.name}">linkki</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

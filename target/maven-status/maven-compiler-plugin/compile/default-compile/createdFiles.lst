@@ -1,0 +1,7 @@
+wad/repository/LinkkiRepository.class
+wad/controller/DefaultController.class
+wad/wepaApplication.class
+wad/repository/SivuRepository.class
+wad/controller/SivuController.class
+wad/domain/Linkki.class
+wad/domain/Sivu.class
