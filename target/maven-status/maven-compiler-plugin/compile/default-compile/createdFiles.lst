@@ -1,7 +1,12 @@
 wad/repository/LinkkiRepository.class
+wad/domain/Kommentti.class
+wad/config/SecurityConfiguration.class
 wad/controller/DefaultController.class
+wad/domain/Logi.class
 wad/wepaApplication.class
 wad/repository/SivuRepository.class
-wad/controller/SivuController.class
 wad/domain/Linkki.class
+wad/repository/LogiRepository.class
+wad/repository/KommenttiRepository.class
+wad/controller/SivuController.class
 wad/domain/Sivu.class

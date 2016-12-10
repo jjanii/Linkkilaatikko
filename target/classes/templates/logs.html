@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Logit</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css" />
+        <style>
+            .custom-restricted {
+                height: 250px;
+                width: 800px;
+                border: 1px solid gray;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h2>Logit</h2>
+
+            <section th:each="logi : ${logs}">
+                   <span th:text="${logi.logi}">kuvaus</span>
+                  
+            </section>
+
+         
+            <a href="/">Takaisin etusivulle</a>
+        </center>
+    </body>
+</html>

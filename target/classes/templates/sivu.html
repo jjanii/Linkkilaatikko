@@ -5,29 +5,51 @@
         <title th:text="${name}">Etusivu</title>
 
         <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css" />
-
+        <style>
+            .custom-restricted {
+                height: 250px;
+                width: 800px;
+                border: 1px solid gray;
+                border-radius: 4px;
+            }
+        </style>
     </head>
     <body>
-        <h2>Linkkisi</h2>
+        <center>
+            <h2>Linkkisi</h2>
 
-        <section th:each="linkki : ${linkit}">
-            <a th:href="${linkki.url}"><h3 th:text="${linkki.nimi}">nimi</h3></a>
-            <span th:text="${linkki.kuvaus}">kuvaus</span>
-            <form th:action="@{/{nimi}/delete/{linkki}(linkki=${linkki.id}, nimi=${name})}" th:method="DELETE">
-                <input type="submit" value="Poista"></input>
+            <section th:each="linkki : ${linkit}">
+                <form th:action="@{/{nimi}/delete/{linkki}(linkki=${linkki.id}, nimi=${name})}" th:method="DELETE">
+                    <a th:href="${linkki.url}"><span class="pure-menu-link pure-menu-heading" th:text="${linkki.nimi}">nimi</span></a>
+                    <span th:text="${linkki.kuvaus}">kuvaus</span>
+                    <input type="submit" value="x"></input>
+                </form>
+            </section>
+
+            <h2>Lisää linkki</h2>
+
+            <form th:action="@{/{nimi}/add(nimi=${name})}" method="POST">
+                <input type="text" value="Linkin nimi" name="nimi1"></input>
+                <input type="text" value="Linkin url" name="url"></input>
+                <input type="text" value="Kuvaus" name="kuvaus"></input>
+                <input type="submit" value="Lisää"></input>
             </form>
-        </section>
 
-        <h2>Lisää linkki</h2>
-
-        <form th:action="@{/{nimi}/add(nimi=${name})}" method="POST">
-            <input type="text" value="Linkin nimi" name="nimi1"></input>
-            <input type="text" value="Linkin url" name="url"></input>
-            <input type="text" value="Kuvaus" name="kuvaus"></input>
-            <input type="submit" value="Lisää"></input>
-        </form>
-
-
-        <a href="/">Takaisin etusivulle</a>
+            <br/><br/>
+            <span class="pure-menu-link pure-menu-heading">Vieraskirja</span>
+            <div class="pure-menu pure-menu-scrollable custom-restricted">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item" th:each="kommentti : ${kommentit}"><span class="pure-menu-link" th:text="${kommentti.kommentti}">kommentti</span></li>
+                </ul>
+            </div>
+            <br/>
+            <form th:action="@{/{nimi}/kommentti(nimi=${name})}" method="POST">
+                <input type="text" value="Kommentti" maxlength="67" name="kommentti"></input>
+                <input type="text" value="Nimimerkki" maxlength="19" name="nimimerkki"></input><br/><br/>
+                <input type="submit" value="Kommentoi!"></input>
+            </form>
+            <br/>
+            <a href="/">Takaisin etusivulle</a>
+        </center>
     </body>
 </html>
