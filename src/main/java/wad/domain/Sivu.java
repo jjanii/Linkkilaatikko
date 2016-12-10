@@ -28,9 +28,22 @@ public class Sivu {
     @OneToMany
     @JoinColumn(name = "sivu_kommentti_id")
     private List<Kommentti> kommentit;
+    private boolean nakyvilla = true;
 
     public void setUrl(String nimi) {
         this.url = nimi;
+    }
+    
+    public void piilota() {
+        this.nakyvilla = false;
+    }
+    
+    public void nayta() {
+        this.nakyvilla = true;
+    }
+    
+    public boolean getNakyvilla() {
+        return this.nakyvilla;
     }
 
     public void lisaaLinkki(Linkki linkki) {

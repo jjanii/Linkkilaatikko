@@ -5,8 +5,6 @@
  */
 package wad.controller;
 
-import java.net.URL;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,11 +83,17 @@ public class SivuController {
     }
 
     @RequestMapping(value = "/{nimi}/kommentti", method = RequestMethod.POST)
-    public String kommentti(@PathVariable String nimi, @RequestParam String kommentti, @RequestParam String nimimerkki) {
+    public String kommentti(@PathVariable String nimi, HttpServletRequest request, @RequestParam String kommentti, @RequestParam String nimimerkki) {
         Kommentti k = new Kommentti();
         String viesti = kommentti + " - " + nimimerkki;
         k.setKommentti(viesti);
         k.setSivu(SR.findOne(nimi));
+
+        String ip = request.getRemoteAddr();
+        Logi log = new Logi();
+        String logi = ip + " lisäsi kommentin " + viesti + " sivulle " + nimi;
+        log.setLogi(logi);
+        LogiRepository.save(log);
 
         SR.findOne(nimi).lisaaKommentti(k);
         KR.save(k);
@@ -103,6 +107,32 @@ public class SivuController {
         String ip = request.getRemoteAddr();
         Logi log = new Logi();
         String logi = ip + " poisti linkin " + LR.findOne(linkki).getUrl() + " sivulta " + nimi;
+        log.setLogi(logi);
+        LogiRepository.save(log);
+        return "redirect:/" + nimi;
+    }
+
+    @RequestMapping(value = "/{nimi}/piilota", method = RequestMethod.POST)
+    public String piilota(@PathVariable String nimi, HttpServletRequest request) {
+        Sivu s = SR.findOne(nimi);
+        s.piilota();
+        SR.save(s);
+        String ip = request.getRemoteAddr();
+        Logi log = new Logi();
+        String logi = ip + " asetti sivun " + nimi + " pois näkyviltä";
+        log.setLogi(logi);
+        LogiRepository.save(log);
+        return "redirect:/" + nimi;
+    }
+
+    @RequestMapping(value = "/{nimi}/nayta", method = RequestMethod.POST)
+    public String nayta(@PathVariable String nimi, HttpServletRequest request) {
+        Sivu s = SR.findOne(nimi);
+        s.nayta();
+        SR.save(s);
+        String ip = request.getRemoteAddr();
+        Logi log = new Logi();
+        String logi = ip + " asetti sivun " + nimi + " näkyville";
         log.setLogi(logi);
         LogiRepository.save(log);
         return "redirect:/" + nimi;

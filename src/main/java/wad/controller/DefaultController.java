@@ -5,6 +5,7 @@
  */
 package wad.controller;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,14 @@ public class DefaultController {
     private LogiRepository LogiRepository;
     @RequestMapping("*")
     public String doDefaultRedirect(Model model) {
-        model.addAttribute("sivut", SR.findAll());
+        List<Sivu> sivut = new ArrayList<>();
+        for (Sivu s : SR.findAll()) {
+            if (s.getNakyvilla()) {
+                sivut.add(s);
+            }
+        }
+       
+        model.addAttribute("sivut", sivut);
         return "index";
     }
 

@@ -49,6 +49,12 @@
                 <input type="submit" value="Kommentoi!"></input>
             </form>
             <br/>
+            <form th:action="@{/{nimi}/piilota(nimi=${name})}" th:method="POST">
+                <input type="submit" value="Piilota sivu etusivun listalta"></input>
+            </form>
+            <form th:action="@{/{nimi}/nayta(nimi=${name})}" th:method="POST">
+                <input type="submit" value="Näytä sivu etusivun listalla (oletus)"></input>
+            </form>
             <a href="/">Takaisin etusivulle</a>
         </center>
     </body>
