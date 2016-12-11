@@ -13,5 +13,15 @@ Koska oletuksena kaikki linkkilaatikot näkyvät etusivulla olevassa listassa, o
 
 Sovelluksella on myös adminpaneeli, jossa admin näkee logit ja adminilla on mahdollisuus poistaa jokin tietty linkkilaatikko. Adminpaneelin pääsee käsiksi menemällä osoitteeseen http://nykyinenosoite/admin ja kirjautumalla tunnuksilla admin:admin.
 
+### Tietokanta
+Ohjelma käyttää 4 tietokantataulua
+
+|   | Create  |  Read  | Update  |  Delete |
+|---|---|---|---|---|
+| [Sivu](https://github.com/jjanii/wepa/blob/master/src/main/java/wad/domain/Sivu.java)  |  x | x  |   | x  |
+| [Linkki](https://github.com/jjanii/wepa/blob/master/src/main/java/wad/domain/Linkki.java)  | x  | x  |   | x  |
+| [Kommentti](https://github.com/jjanii/wepa/blob/master/src/main/java/wad/domain/Kommentt.java)  | x  | x  |   |   |
+| [Logi](https://github.com/jjanii/wepa/blob/master/src/main/java/wad/domain/Logi.java)  |  x | x  |   |   |
+
 ### Lisäyksiä
 Sovellus on mielestäni kattava, ja toteutin kaikki ominaisuudet jotka itse koin tarpeellisiksi. Kuitenkin jatkokehitystä varten esimerkiksi tietyn ip-osoitteen estäminen häiriköinnin tms takia voisi olla suotavaa. Sivutus olisi myös yksi mahdollinen lisäys tulevaisuutta varten, varsinkin logeille koska ne saattavat kasvaa huomattavan kokoisiksi.
