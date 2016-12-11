@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import wad.domain.Kommentti;
 import wad.domain.Linkki;
 import wad.domain.Logi;
@@ -40,10 +41,15 @@ public class SivuController {
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public String sivu(Model model, @PathVariable String name, HttpServletRequest request) {
+        if (name.equals("admin")) {
+            return "redirect:/admin/index";
+        }
+        
         if (SR.findOne(name) != null) {
             model.addAttribute("linkit", SR.findOne(name).getLinkit());
             model.addAttribute("name", name);
             model.addAttribute("kommentit", SR.findOne(name).getKommentit());
+            
             return "sivu";
         }
         String ip = request.getRemoteAddr();
@@ -84,6 +90,9 @@ public class SivuController {
 
     @RequestMapping(value = "/{nimi}/kommentti", method = RequestMethod.POST)
     public String kommentti(@PathVariable String nimi, HttpServletRequest request, @RequestParam String kommentti, @RequestParam String nimimerkki) {
+        if (kommentti.isEmpty() || nimimerkki.isEmpty()) {
+            return "redirect:/" + nimi;
+        }
         Kommentti k = new Kommentti();
         String viesti = kommentti + " - " + nimimerkki;
         k.setKommentti(viesti);
@@ -103,17 +112,17 @@ public class SivuController {
 
     @RequestMapping(value = "/{nimi}/delete/{linkki}", method = RequestMethod.DELETE)
     public String delete(@PathVariable String nimi, @PathVariable Long linkki, HttpServletRequest request) {
-        LR.delete(linkki);
         String ip = request.getRemoteAddr();
         Logi log = new Logi();
         String logi = ip + " poisti linkin " + LR.findOne(linkki).getUrl() + " sivulta " + nimi;
         log.setLogi(logi);
         LogiRepository.save(log);
+        LR.delete(linkki);
         return "redirect:/" + nimi;
     }
 
     @RequestMapping(value = "/{nimi}/piilota", method = RequestMethod.POST)
-    public String piilota(@PathVariable String nimi, HttpServletRequest request) {
+    public String piilota(@PathVariable String nimi, HttpServletRequest request, final RedirectAttributes redirectAttributes) {
         Sivu s = SR.findOne(nimi);
         s.piilota();
         SR.save(s);
@@ -122,13 +131,16 @@ public class SivuController {
         String logi = ip + " asetti sivun " + nimi + " pois näkyviltä";
         log.setLogi(logi);
         LogiRepository.save(log);
+        redirectAttributes.addFlashAttribute("message", "Sivu piilotettu etusivun listalta");
+
         return "redirect:/" + nimi;
     }
 
     @RequestMapping(value = "/{nimi}/nayta", method = RequestMethod.POST)
-    public String nayta(@PathVariable String nimi, HttpServletRequest request) {
+    public String nayta(@PathVariable String nimi, HttpServletRequest request, final RedirectAttributes redirectAttributes) {
         Sivu s = SR.findOne(nimi);
         s.nayta();
+        redirectAttributes.addFlashAttribute("message", "Sivu näkyvillä etusivun listalla");
         SR.save(s);
         String ip = request.getRemoteAddr();
         Logi log = new Logi();

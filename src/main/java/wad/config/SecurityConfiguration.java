@@ -25,8 +25,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+                .antMatchers("/admin/index").hasAuthority("ADMIN")
                 .antMatchers("/admin/logs").hasAuthority("ADMIN")
-                .antMatchers("/admin/ban").hasAuthority("ADMIN");
+                .antMatchers("/admin/sivut").hasAuthority("ADMIN");
+        
         http.formLogin()
                 .permitAll();
     }

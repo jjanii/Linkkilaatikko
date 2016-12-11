@@ -6,6 +6,7 @@
 package wad.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -71,6 +72,7 @@ public class Sivu {
         if (this.kommentit == null) {
             this.kommentit = new ArrayList<>();
         }
+        Collections.reverse(this.kommentit);
         return this.kommentit;
     }
 

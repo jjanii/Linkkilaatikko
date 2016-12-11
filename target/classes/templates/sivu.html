@@ -12,6 +12,20 @@
                 border: 1px solid gray;
                 border-radius: 4px;
             }
+
+            .piilotus-vika {
+                margin-left: 10px;
+            } 
+
+            .flex {
+                display: flex;
+                justify-content: center;
+            }
+
+            .pienennys {
+                font-size: 90%;
+                padding: 2px 6px;
+            }
         </style>
     </head>
     <body>
@@ -22,17 +36,17 @@
                 <form th:action="@{/{nimi}/delete/{linkki}(linkki=${linkki.id}, nimi=${name})}" th:method="DELETE">
                     <a th:href="${linkki.url}"><span class="pure-menu-link pure-menu-heading" th:text="${linkki.nimi}">nimi</span></a>
                     <span th:text="${linkki.kuvaus}">kuvaus</span>
-                    <input type="submit" value="x"></input>
+                    <input type="submit" class="pure-button pienennys" value="x"></input>
                 </form>
             </section>
 
             <h2>Lisää linkki</h2>
 
-            <form th:action="@{/{nimi}/add(nimi=${name})}" method="POST">
-                <input type="text" value="Linkin nimi" name="nimi1"></input>
-                <input type="text" value="Linkin url" name="url"></input>
-                <input type="text" value="Kuvaus" name="kuvaus"></input>
-                <input type="submit" value="Lisää"></input>
+            <form class="pure-form" th:action="@{/{nimi}/add(nimi=${name})}" method="POST">
+                <input type="text" class="pure-input-rounded" placeholder="Linkin nimi" name="nimi1"></input>
+                <input type="text" class="pure-input-rounded" placeholder="Linkin url (muista http://)" name="url"></input>
+                <input type="text" class="pure-input-rounded" placeholder="Kuvaus" name="kuvaus"></input>
+                <input type="submit" class="pure-button" value="Lisää"></input>
             </form>
 
             <br/><br/>
@@ -43,19 +57,27 @@
                 </ul>
             </div>
             <br/>
-            <form th:action="@{/{nimi}/kommentti(nimi=${name})}" method="POST">
-                <input type="text" value="Kommentti" maxlength="67" name="kommentti"></input>
-                <input type="text" value="Nimimerkki" maxlength="19" name="nimimerkki"></input><br/><br/>
-                <input type="submit" value="Kommentoi!"></input>
+            <form th:action="@{/{nimi}/kommentti(nimi=${name})}" class="pure-form" method="POST">
+                <input type="text" placeholder="Kommentti" class="pure-input-rounded" maxlength="67" name="kommentti"></input>
+                <input type="text" placeholder="Nimimerkki" class="pure-input-rounded" maxlength="19" name="nimimerkki"></input>
+                <input type="submit" class="pure-button" value="Kommentoi!"></input>
             </form>
             <br/>
-            <form th:action="@{/{nimi}/piilota(nimi=${name})}" th:method="POST">
-                <input type="submit" value="Piilota sivu etusivun listalta"></input>
-            </form>
-            <form th:action="@{/{nimi}/nayta(nimi=${name})}" th:method="POST">
-                <input type="submit" value="Näytä sivu etusivun listalla (oletus)"></input>
-            </form>
+            <div class="flex">
+                <form class="pure-form" th:action="@{/{nimi}/piilota(nimi=${name})}" th:method="POST">
+                    <input type="submit"  class="pure-button" value="Piilota sivu etusivun listalta"></input>
+                </form>
+                <form class="pure-form" th:action="@{/{nimi}/nayta(nimi=${name})}" th:method="POST">
+                    <input type="submit"  class="pure-button piilotus-vika" value="Näytä sivu etusivun listalla (oletus)"></input>
+                </form>
+            </div>
+
+            <span th:if="${message != null}" th:text="${message}"></span>
+            <br />
+            
+            <a href="/admin/index">Takaisin adminpaneeliin</a>
             <a href="/">Takaisin etusivulle</a>
         </center>
+
     </body>
 </html>

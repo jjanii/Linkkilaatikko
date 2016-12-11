@@ -44,10 +44,4 @@ public class DefaultController {
         return "index";
     }
 
-    @RequestMapping(value = "/admin/logs")
-    public String getLogs(Model model) {
-        model.addAttribute("logs", LogiRepository.findAllByOrderByIdDesc());
-        return "logs";
-    }
-
 }

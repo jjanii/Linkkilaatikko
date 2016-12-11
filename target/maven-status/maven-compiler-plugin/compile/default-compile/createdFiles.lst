@@ -5,6 +5,7 @@ wad/controller/DefaultController.class
 wad/domain/Logi.class
 wad/wepaApplication.class
 wad/repository/SivuRepository.class
+wad/controller/AdminController.class
 wad/domain/Linkki.class
 wad/repository/LogiRepository.class
 wad/repository/KommenttiRepository.class

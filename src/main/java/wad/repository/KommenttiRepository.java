@@ -5,7 +5,9 @@
  */
 package wad.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import wad.domain.Kommentti;
 import wad.domain.Kommentti;
 
 /**
@@ -13,5 +15,6 @@ import wad.domain.Kommentti;
  * @author Jani
  */
 public interface KommenttiRepository extends JpaRepository<Kommentti, Long> {
-    
+        public List<Kommentti> findAllByOrderByIdDesc();
+
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="wad.controller.SivuControllerTest" time="8.871" tests="7" errors="0" skipped="0" failures="0">
+<testsuite name="wad.controller.SivuControllerTest" time="11.025" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/jre/lib"/>
@@ -60,11 +60,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="sivunOtsikkoOikein" classname="wad.controller.SivuControllerTest" time="1.154"/>
-  <testcase name="adminNakeeLogitKirjautumisenJalkeen" classname="wad.controller.SivuControllerTest" time="0.392"/>
-  <testcase name="logeissaOikeaTieto" classname="wad.controller.SivuControllerTest" time="6.322"/>
-  <testcase name="viallinenLinkkiEiLisaaLinkkia" classname="wad.controller.SivuControllerTest" time="0.226"/>
-  <testcase name="kommentinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.226"/>
-  <testcase name="lisattyLinkkiJaKommenttiNakyySivulla" classname="wad.controller.SivuControllerTest" time="0.355"/>
-  <testcase name="linkinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.196"/>
+  <testcase name="sivunOtsikkoOikein" classname="wad.controller.SivuControllerTest" time="1.52"/>
+  <testcase name="adminNakeeLogitKirjautumisenJalkeen" classname="wad.controller.SivuControllerTest" time="0.587"/>
+  <testcase name="logeissaOikeaTieto" classname="wad.controller.SivuControllerTest" time="6.563"/>
+  <testcase name="sivunPiilotusJaNayttaminenToimii" classname="wad.controller.SivuControllerTest" time="0.521"/>
+  <testcase name="viallinenLinkkiEiLisaaLinkkia" classname="wad.controller.SivuControllerTest" time="0.277"/>
+  <testcase name="kommentinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.305"/>
+  <testcase name="lisattyLinkkiJaKommenttiNakyySivulla" classname="wad.controller.SivuControllerTest" time="1.043"/>
+  <testcase name="linkinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.209"/>
 </testsuite>
