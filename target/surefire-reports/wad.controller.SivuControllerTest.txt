@@ -1,14 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: wad.controller.SivuControllerTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 69.141 sec <<< FAILURE! - in wad.controller.SivuControllerTest
-sivunPiilotusJaNayttaminenToimii(wad.controller.SivuControllerTest)  Time elapsed: 30.48 sec  <<< ERROR!
-org.openqa.selenium.NoSuchElementException: No Element found
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
-System info: host: 'Jan-MacBook-Air.local', ip: '192.168.11.5', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.1', java.version: '1.8.0_101'
-Driver info: driver.version: unknown
-	at org.fluentlenium.core.domain.FluentListImpl.click(FluentListImpl.java:43)
-	at org.fluentlenium.core.Fluent.click(Fluent.java:605)
-	at wad.controller.SivuControllerTest.sivunPiilotusJaNayttaminenToimii(SivuControllerTest.java:117)
-
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 33.836 sec - in wad.controller.SivuControllerTest

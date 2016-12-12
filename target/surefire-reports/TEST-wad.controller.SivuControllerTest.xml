@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="wad.controller.SivuControllerTest" time="40.884" tests="8" errors="1" skipped="0" failures="0">
+<testsuite name="wad.controller.SivuControllerTest" time="9.306" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/jre/lib"/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven-nblib/netbeans-eventspy.jar test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -60,60 +60,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="sivunOtsikkoOikein" classname="wad.controller.SivuControllerTest" time="1.796"/>
-  <testcase name="adminNakeeLogitKirjautumisenJalkeen" classname="wad.controller.SivuControllerTest" time="0.64"/>
-  <testcase name="logeissaOikeaTieto" classname="wad.controller.SivuControllerTest" time="6.728"/>
-  <testcase name="sivunPiilotusJaNayttaminenToimii" classname="wad.controller.SivuControllerTest" time="30.48">
-    <error message="No Element found&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: &apos;2.53.1&apos;, revision: &apos;a36b8b1cd5757287168e54b817830adce9b0158d&apos;, time: &apos;2016-06-30 19:26:09&apos;&#10;System info: host: &apos;Jan-MacBook-Air.local&apos;, ip: &apos;192.168.11.5&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.12.1&apos;, java.version: &apos;1.8.0_101&apos;&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: No Element found
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.53.1', revision: 'a36b8b1cd5757287168e54b817830adce9b0158d', time: '2016-06-30 19:26:09'
-System info: host: 'Jan-MacBook-Air.local', ip: '192.168.11.5', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.1', java.version: '1.8.0_101'
-Driver info: driver.version: unknown
-	at org.fluentlenium.core.domain.FluentListImpl.click(FluentListImpl.java:43)
-	at org.fluentlenium.core.Fluent.click(Fluent.java:605)
-	at wad.controller.SivuControllerTest.sivunPiilotusJaNayttaminenToimii(SivuControllerTest.java:117)
-</error>
-    <system-out><![CDATA[2016-12-11 22:02:44.382  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:2103] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.382  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:2126] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.383  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:2503] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.384  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3272] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.384  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3403] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.385  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3458] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.386  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3510] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.387  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3565] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.388  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3603] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.388  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3646] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.389  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3697] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.389  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3740] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.389  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3796] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.390  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3849] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.391  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3886] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.391  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3943] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.392  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:3988] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.392  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4040] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.392  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4084] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.393  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4142] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.393  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4180] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.394  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4233] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.395  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4289] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.396  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4334] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.396  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4386] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.397  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4430] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.397  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4468] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.398  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4524] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.398  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4578] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.399  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4636] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.399  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:4681] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.401  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:5403] Error in expression; ':' found after identifier "progid".
-2016-12-11 22:02:44.404  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:6114] Invalid color "#000\9".
-2016-12-11 22:02:44.405  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:6295] Error in expression; ':' found after identifier "progid".
-2016-12-11 22:02:44.414  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:10911] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.414  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:10927] Error in declaration. '*' is not allowed as first char of a property.
-2016-12-11 22:02:44.422  WARN 58345 --- [           main] c.g.htmlunit.DefaultCssErrorHandler      : CSS error: 'https://unpkg.com/purecss@0.6.0/build/pure-min.css' [11:14440] Error in declaration. '*' is not allowed as first char of a property.
-]]></system-out>
-  </testcase>
-  <testcase name="viallinenLinkkiEiLisaaLinkkia" classname="wad.controller.SivuControllerTest" time="0.305"/>
-  <testcase name="kommentinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.223"/>
-  <testcase name="lisattyLinkkiJaKommenttiNakyySivulla" classname="wad.controller.SivuControllerTest" time="0.371"/>
-  <testcase name="linkinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.341"/>
+  <testcase name="sivunOtsikkoOikein" classname="wad.controller.SivuControllerTest" time="1.044"/>
+  <testcase name="adminNakeeLogitKirjautumisenJalkeen" classname="wad.controller.SivuControllerTest" time="0.381"/>
+  <testcase name="logeissaOikeaTieto" classname="wad.controller.SivuControllerTest" time="6.31"/>
+  <testcase name="sivunPiilotusJaNayttaminenToimii" classname="wad.controller.SivuControllerTest" time="0.463"/>
+  <testcase name="viallinenLinkkiEiLisaaLinkkia" classname="wad.controller.SivuControllerTest" time="0.269"/>
+  <testcase name="kommentinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.294"/>
+  <testcase name="lisattyLinkkiJaKommenttiNakyySivulla" classname="wad.controller.SivuControllerTest" time="0.316"/>
+  <testcase name="linkinLisaysToimii" classname="wad.controller.SivuControllerTest" time="0.229"/>
 </testsuite>

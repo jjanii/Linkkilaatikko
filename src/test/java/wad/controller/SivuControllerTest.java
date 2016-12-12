@@ -114,7 +114,7 @@ public class SivuControllerTest extends FluentTest {
         assertThat(pageSource()).doesNotContain("testisivu");
 
         goTo("http://localhost:" + port + "/testisivu");
-        click("input[value='Näytä sivu etusivun listalla (oletus)']");
+        click("input[value='Näytä sivu etusivun listalla']");
         goTo("http://localhost:" + port + "/");
         assertThat(pageSource()).contains("testisivu");
 
