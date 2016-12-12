@@ -6,18 +6,12 @@
 package wad.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import wad.domain.Logi;
 import wad.domain.Sivu;
-import wad.repository.LogiRepository;
 import wad.repository.SivuRepository;
 
 /**
@@ -28,13 +22,11 @@ import wad.repository.SivuRepository;
 public class DefaultController {
 
     @Autowired
-    private SivuRepository SR;
-    @Autowired
-    private LogiRepository LogiRepository;
+    private SivuRepository sivuRepository;
     @RequestMapping("*")
     public String doDefaultRedirect(Model model) {
         List<Sivu> sivut = new ArrayList<>();
-        for (Sivu s : SR.findAll()) {
+        for (Sivu s : sivuRepository.findAll()) {
             if (s.getNakyvilla()) {
                 sivut.add(s);
             }

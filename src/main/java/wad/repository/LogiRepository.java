@@ -7,6 +7,7 @@ package wad.repository;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import wad.domain.Kommentti;
 import wad.domain.Logi;
 
 /**
@@ -14,7 +15,5 @@ import wad.domain.Logi;
  * @author Jani
  */
 public interface LogiRepository extends JpaRepository<Logi, Long> {
-
     public List<Logi> findAllByOrderByIdDesc();
-
 }

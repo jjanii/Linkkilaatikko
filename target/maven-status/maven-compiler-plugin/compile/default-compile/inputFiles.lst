@@ -2,6 +2,7 @@
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/domain/Sivu.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/config/SecurityConfiguration.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/domain/Linkki.java
+/Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/service/SivuService.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/controller/DefaultController.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/repository/LogiRepository.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/repository/KommenttiRepository.java

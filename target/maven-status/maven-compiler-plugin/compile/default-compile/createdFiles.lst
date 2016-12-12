@@ -7,6 +7,7 @@ wad/wepaApplication.class
 wad/repository/SivuRepository.class
 wad/controller/AdminController.class
 wad/domain/Linkki.class
+wad/service/SivuService.class
 wad/repository/LogiRepository.class
 wad/repository/KommenttiRepository.class
 wad/controller/SivuController.class

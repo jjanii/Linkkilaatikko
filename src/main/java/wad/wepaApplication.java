@@ -10,5 +10,4 @@ public class wepaApplication {
         SpringApplication.run(wepaApplication.class, args);
     }
 
-
 }
