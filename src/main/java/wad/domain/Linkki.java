@@ -7,8 +7,6 @@ package wad.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -17,11 +15,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  */
 @Entity
 public class Linkki extends AbstractPersistable<Long> {
-    
-  
-    @URL
+
     private String url;
-    @NotBlank
     private String nimi;
     private String kuvaus;
     @ManyToOne
@@ -30,11 +25,11 @@ public class Linkki extends AbstractPersistable<Long> {
     public void setUrl(String url) {
         this.url = url;
     }
-    
+
     public void setSivu(Sivu sivu) {
         this.sivu = sivu;
     }
-    
+
     public Sivu getSivu() {
         return this.sivu;
     }

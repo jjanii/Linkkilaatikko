@@ -5,6 +5,7 @@
  */
 package wad.service;
 
+import java.net.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wad.domain.Kommentti;
@@ -45,19 +46,20 @@ public class SivuService {
     }
 
     public void luoLinkki(String nimi, String url, String kuvaus, String ip, String nimi1) {
-        Linkki link = new Linkki();
-        link.setUrl(url);
-        link.setKuvaus(kuvaus);
-        link.setNimi(nimi1);
-        link.setSivu(sivuRepository.findOne(nimi));
+        if (!nimi.isEmpty() && isValidUrl(url)) {
+            Linkki link = new Linkki();
+            link.setUrl(url);
+            link.setKuvaus(kuvaus);
+            link.setNimi(nimi1);
+            link.setSivu(sivuRepository.findOne(nimi));
 
-        sivuRepository.findOne(nimi).lisaaLinkki(link);
-        linkkiRepository.save(link);
-        Logi log = new Logi();
-        String logi = ip + " lisäsi linkin " + url + " sivulle " + nimi;
-        log.setLogi(logi);
-        logiRepository.save(log);
-
+            sivuRepository.findOne(nimi).lisaaLinkki(link);
+            linkkiRepository.save(link);
+            Logi log = new Logi();
+            String logi = ip + " lisäsi linkin " + url + " sivulle " + nimi;
+            log.setLogi(logi);
+            logiRepository.save(log);
+        }
     }
 
     public void luoKommentti(String nimi, String kommentti, String nimimerkki, String ip) {
@@ -102,5 +104,14 @@ public class SivuService {
         String logi = ip + " asetti sivun " + nimi + " näkyville";
         log.setLogi(logi);
         logiRepository.save(log);
+    }
+
+    public boolean isValidUrl(String url) {
+        try {
+            new URL(url);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
