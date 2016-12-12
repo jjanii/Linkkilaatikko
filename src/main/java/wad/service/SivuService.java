@@ -51,18 +51,17 @@ public class SivuService {
         link.setNimi(nimi1);
         link.setSivu(sivuRepository.findOne(nimi));
 
-        if (link.isValid()) {
-            sivuRepository.findOne(nimi).lisaaLinkki(link);
-            linkkiRepository.save(link);
-            Logi log = new Logi();
-            String logi = ip + " lisäsi linkin " + url + " sivulle " + nimi;
-            log.setLogi(logi);
-            logiRepository.save(log);
-        }
+        sivuRepository.findOne(nimi).lisaaLinkki(link);
+        linkkiRepository.save(link);
+        Logi log = new Logi();
+        String logi = ip + " lisäsi linkin " + url + " sivulle " + nimi;
+        log.setLogi(logi);
+        logiRepository.save(log);
+
     }
 
     public void luoKommentti(String nimi, String kommentti, String nimimerkki, String ip) {
-        if (!kommentti.isEmpty() || !nimimerkki.isEmpty()) {
+        if (!kommentti.isEmpty() && !nimimerkki.isEmpty()) {
             Kommentti k = new Kommentti();
             String viesti = kommentti + " - " + nimimerkki;
             k.setKommentti(viesti);
@@ -84,7 +83,7 @@ public class SivuService {
         logiRepository.save(log);
         linkkiRepository.delete(linkinId);
     }
-    
+
     public void piilotaEtusivulta(String nimi, String ip) {
         Sivu s = sivuRepository.findOne(nimi);
         s.piilota();
@@ -94,7 +93,7 @@ public class SivuService {
         log.setLogi(logi);
         logiRepository.save(log);
     }
-    
+
     public void naytaEtusivulla(String nimi, String ip) {
         Sivu s = sivuRepository.findOne(nimi);
         s.nayta();

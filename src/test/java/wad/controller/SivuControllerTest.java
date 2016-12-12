@@ -155,6 +155,33 @@ public class SivuControllerTest extends FluentTest {
         return k;
     }
 
+    @Test
+    public void tyhjaNimimerkkiTaiKommenttiEiLisaaKommenttia() {
+        goTo("http://localhost:" + port + "/testisivu");
+        String kommentti = UUID.randomUUID().toString().substring(0, 30);
+        fill("input[name=kommentti]").with(kommentti);
+        fill("input[name=nimimerkki]").with("nick");
+        click("input[value='Kommentoi!']");
+        assertThat(pageSource()).contains(kommentti);
+
+        kommentti = UUID.randomUUID().toString().substring(0, 30);
+        fill("input[name=kommentti]").with(kommentti);
+        click("input[value='Kommentoi!']");
+        assertThat(pageSource()).doesNotContain(kommentti);
+
+        String nimimerkki = UUID.randomUUID().toString().substring(0, 8);
+        fill("input[name=kommentti]").with(kommentti);
+        fill("input[name=nimimerkki]").with(nimimerkki);
+        click("input[value='Kommentoi!']");
+        assertThat(pageSource()).contains(nimimerkki);
+
+        nimimerkki = UUID.randomUUID().toString().substring(0, 8);
+        fill("input[name=nimimerkki]").with(nimimerkki);
+        click("input[value='Kommentoi!']");
+        assertThat(pageSource()).doesNotContain(nimimerkki);
+
+    }
+
     private void syotaTiedot(String username, String password) {
         fill(find(By.name("username"))).with(username);
         fill(find(By.name("password"))).with(password);

@@ -5,10 +5,10 @@
  */
 package wad.domain;
 
-import java.net.URL;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -18,7 +18,8 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Linkki extends AbstractPersistable<Long> {
     
-    @NotBlank
+  
+    @URL
     private String url;
     @NotBlank
     private String nimi;
@@ -57,14 +58,4 @@ public class Linkki extends AbstractPersistable<Long> {
     public String getUrl() {
         return this.url;
     }
-
-    public boolean isValid() {
-        try {
-            new URL(this.url);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
 }
