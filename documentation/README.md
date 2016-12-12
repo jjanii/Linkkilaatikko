@@ -1,5 +1,8 @@
 # Janin linkkilaatikko
 
+##Sovellus: https://afternoon-inlet-85980.herokuapp.com/
+##Travis: https://travis-ci.org/jjanii/wepa
+
 ### Idea 
 Sovellukseni ideana on, että kuka tahansa voi luoda oman "linkkilaatikon" jonne voi lisätä talteen hyödyllisiä linkkejä esimerkiksi tärkeää opiskelumateriaalia. Jokaisen linkkilaatikon voi luoda vain kerran samalla nimellä. 
 
@@ -24,4 +27,6 @@ Ohjelma käyttää 4 tietokantataulua
 | [Logi](https://github.com/jjanii/wepa/blob/master/src/main/java/wad/domain/Logi.java)  |  x | x  |   |   |
 
 ### Lisäyksiä
-Sovellus on mielestäni kattava, ja toteutin kaikki ominaisuudet jotka itse koin tarpeellisiksi. Kuitenkin jatkokehitystä varten esimerkiksi tietyn ip-osoitteen estäminen häiriköinnin tms takia voisi olla suotavaa. Sivutus olisi myös yksi mahdollinen lisäys tulevaisuutta varten, varsinkin logeille koska ne saattavat kasvaa huomattavan kokoisiksi.
+Sovellus on mielestäni kattava, ja toteutin kaikki ominaisuudet jotka itse koin tarpeellisiksi. Kuitenkin jatkokehitystä varten esimerkiksi tietyn ip-osoitteen estäminen häiriköinnin tms takia voisi olla suotavaa. Sivutus olisi myös yksi mahdollinen lisäys tulevaisuutta varten, varsinkin logeille koska ne saattavat kasvaa huomattavan kokoisiksi. Tällä hetkellä logit lisätään scrollattavaan elementtiin, joten sivun pituus ei kasva mikäli logien määrä kasvaa suureksi.
+
+Myös jatkoa varten jokainen sivu voisi vaatia sivun luonnin yhteydessä tunnistautumisen, esimerkiksi pelkän salasanan asettamisen, jolloin vain sivun luoja pystyisi lisäämään/poistamaan linkkejä, sekä asettamaan sivun näkyville/piiloon etusivulta.
