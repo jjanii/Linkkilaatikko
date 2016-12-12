@@ -12,16 +12,21 @@
                 border: 1px solid gray;
                 border-radius: 4px;
             }
+            .koko {
+                height: 680px;
+                width: 80%;
+            }
         </style>
     </head>
     <body>
         <center>
             <h2>Logit</h2>
+            <div class="pure-menu pure-menu-scrollable custom-restricted koko">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item" th:each="logi : ${logs}"><span th:text="${logi.logi}"></span></li>
+                </ul>
+            </div>
 
-            <section th:each="logi : ${logs}">
-                   <span th:text="${logi.logi}">kuvaus</span>
-                  
-            </section>
             <br/><br/>
             <a href="/admin/index">Takaisin adminpaneeliin</a>
             <a href="/">Takaisin etusivulle</a>

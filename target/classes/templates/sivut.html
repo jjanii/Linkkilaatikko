@@ -13,10 +13,6 @@
                 border-radius: 4px;
             }
 
-            .piilotus-vika {
-                margin-left: 10px;
-            } 
-
             .flex {
                 display: flex;
                 justify-content: center;
@@ -31,13 +27,17 @@
     <body>
         <center>
             <h2>Sivut</h2>
-
-            <section th:each="sivu : ${sivut}">
-                <form th:action="@{/admin/sivut/delete/{sivu}(sivu=${sivu.url})}" th:method="DELETE">
-                    <span th:text="${sivu.name}">nimi</span>
-                    <input type="submit" class="pure-button pienennys" value="x"></input>
-                </form>
-            </section>
+            
+                <div class="pure-menu pure-menu-scrollable custom-restricted koko">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item" th:each="sivu : ${sivut}">
+                            <form th:action="@{/admin/sivut/delete/{sivu}(sivu=${sivu.url})}" th:method="DELETE">
+                                <span th:text="${sivu.name}">nimi</span>
+                                <input type="submit" class="pure-button pienennys" value="x"></input>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
 
             <br /><br />
             <a href="/admin/index">Takaisin adminpaneeliin</a>

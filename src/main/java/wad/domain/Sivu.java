@@ -8,6 +8,7 @@ package wad.domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,10 +24,10 @@ public class Sivu {
     @Id
     private String url;
     private String nimi;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "sivu_linkki_id")
     private List<Linkki> linkit;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "sivu_kommentti_id")
     private List<Kommentti> kommentit;
     private boolean nakyvilla = true;

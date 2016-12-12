@@ -49,6 +49,7 @@ public class SivuController {
             model.addAttribute("linkit", SR.findOne(name).getLinkit());
             model.addAttribute("name", name);
             model.addAttribute("kommentit", SR.findOne(name).getKommentit());
+            model.addAttribute("sivu", SR.findOne(name));
             
             return "sivu";
         }

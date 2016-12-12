@@ -44,9 +44,9 @@
 
             <form class="pure-form" th:action="@{/{nimi}/add(nimi=${name})}" method="POST">
                 <input type="text" class="pure-input-rounded" placeholder="Linkin nimi" name="nimi1"></input>
-                <input type="text" class="pure-input-rounded" placeholder="Linkin url (muista http://)" name="url"></input>
+                <input type="text" class="pure-input-rounded" placeholder="Linkin url (http://...)" name="url"></input>
                 <input type="text" class="pure-input-rounded" placeholder="Kuvaus" name="kuvaus"></input>
-                <input type="submit" class="pure-button" value="Lisää"></input>
+                <input type="submit" class="pure-button pure-button-active" value="Lisää"></input>
             </form>
 
             <br/><br/>
@@ -60,22 +60,21 @@
             <form th:action="@{/{nimi}/kommentti(nimi=${name})}" class="pure-form" method="POST">
                 <input type="text" placeholder="Kommentti" class="pure-input-rounded" maxlength="67" name="kommentti"></input>
                 <input type="text" placeholder="Nimimerkki" class="pure-input-rounded" maxlength="19" name="nimimerkki"></input>
-                <input type="submit" class="pure-button" value="Kommentoi!"></input>
+                <input type="submit" class="pure-button pure-button-active" value="Kommentoi!"></input>
             </form>
             <br/>
             <div class="flex">
-                <form class="pure-form" th:action="@{/{nimi}/piilota(nimi=${name})}" th:method="POST">
-                    <input type="submit"  class="pure-button" value="Piilota sivu etusivun listalta"></input>
+                <form th:if="${sivu.nakyvilla == true}" class="pure-form" th:action="@{/{nimi}/piilota(nimi=${name})}" th:method="POST">
+                    <input type="submit"  class="pure-button pure-button-active" value="Piilota sivu etusivun listalta"></input>
                 </form>
-                <form class="pure-form" th:action="@{/{nimi}/nayta(nimi=${name})}" th:method="POST">
-                    <input type="submit"  class="pure-button piilotus-vika" value="Näytä sivu etusivun listalla (oletus)"></input>
+                <form th:if="${sivu.nakyvilla == false}" class="pure-form" th:action="@{/{nimi}/nayta(nimi=${name})}" th:method="POST">
+                    <input type="submit"  class="pure-button pure-button-active piilotus-vika" value="Näytä sivu etusivun listalla"></input>
                 </form>
             </div>
 
             <span th:if="${message != null}" th:text="${message}"></span>
             <br />
             
-            <a href="/admin/index">Takaisin adminpaneeliin</a>
             <a href="/">Takaisin etusivulle</a>
         </center>
 
