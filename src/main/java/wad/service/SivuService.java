@@ -46,7 +46,7 @@ public class SivuService {
     }
 
     public void luoLinkki(String nimi, String url, String kuvaus, String ip, String nimi1) {
-        if (!nimi.isEmpty() && isValidUrl(url)) {
+        if (!nimi1.isEmpty() && isValidUrl(url)) {
             Linkki link = new Linkki();
             link.setUrl(url);
             link.setKuvaus(kuvaus);
