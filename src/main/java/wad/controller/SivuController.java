@@ -34,7 +34,7 @@ public class SivuController {
         if (name.equals("admin")) {
             return "redirect:/admin/index";
         }
-        
+
         if (sivuRepository.findOne(name) == null) {
             sivuService.luoSivu(name, request.getRemoteAddr());
             return "redirect:/" + name;
@@ -76,6 +76,17 @@ public class SivuController {
     public String nayta(@PathVariable String nimi, HttpServletRequest request, final RedirectAttributes redirectAttributes) {
         sivuService.naytaEtusivulla(nimi, request.getRemoteAddr());
         redirectAttributes.addFlashAttribute("message", "Sivu näkyvillä etusivun listalla");
+        return "redirect:/" + nimi;
+    }
+
+    @RequestMapping(value = "/{nimi}/ilmianna", method = RequestMethod.POST)
+    public String ilmianna(@PathVariable String nimi, HttpServletRequest request, final RedirectAttributes redirectAttributes) {
+        if (sivuRepository.findOne(nimi).getIlmianto() == null) {
+            sivuService.ilmianna(nimi, request.getRemoteAddr());
+            redirectAttributes.addFlashAttribute("message", "Sivu " + nimi + " ilmiannettu");
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Sivu on jo ilmiannettu");
+        }
         return "redirect:/" + nimi;
     }
 

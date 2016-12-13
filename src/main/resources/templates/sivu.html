@@ -70,12 +70,16 @@
                 <form th:if="${sivu.nakyvilla == false}" class="pure-form" th:action="@{/{nimi}/nayta(nimi=${name})}" th:method="POST">
                     <input type="submit"  class="pure-button pure-button-active piilotus-vika" value="Näytä sivu etusivun listalla"></input>
                 </form>
+                <form class="pure-form" th:action="@{/{nimi}/ilmianna(nimi=${name})}" th:method="POST">
+                    <input type="submit"  class="pure-button pure-button-active piilotus-vika" value="Ilmianna sivu"></input>
+                </form>
             </div>
-
+            <br />
             <span th:if="${message != null}" th:text="${message}"></span>
             <br />
-            
-            <a href="/">Takaisin etusivulle</a>
+            <br />
+            <a href="/">Takaisin etusivulle</a> 
+           
         </center>
 
     </body>

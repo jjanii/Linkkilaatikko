@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Ilmiannot</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css" />
+        <style>
+            .custom-restricted {
+                height: 250px;
+                width: 800px;
+                border: 1px solid gray;
+                border-radius: 4px;
+            }
+
+            .flex {
+                display: flex;
+                justify-content: center;
+            }
+
+            .pienennys {
+                font-size: 90%;
+                padding: 2px 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h2>Ilmiannetut sivut</h2>
+
+            <div class="pure-menu pure-menu-scrollable custom-restricted">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item" th:each="ilmianto : ${ilmiannot}">
+                        <a th:href="@{../{sivu}(sivu=${ilmianto.sivunnimi})}" class="pure-menu-link" th:text="${ilmianto.sivunnimi}">linkki</a>
+                        <form th:action="@{/admin/sivut/delete/{sivu}/{ilmianto}(ilmianto=${ilmianto.id}, sivu=${ilmianto.sivunnimi})}" th:method="DELETE">
+                            <input type="submit" class="pure-button pienennys" value="x"></input>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+            <br /><br />
+            <a href="/admin/index">Takaisin adminpaneeliin</a>
+            <a href="/">Takaisin etusivulle</a>
+        </center>
+    </body>
+</html>

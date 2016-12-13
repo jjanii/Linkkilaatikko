@@ -8,10 +8,12 @@ package wad.service;
 import java.net.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import wad.domain.Ilmianto;
 import wad.domain.Kommentti;
 import wad.domain.Linkki;
 import wad.domain.Logi;
 import wad.domain.Sivu;
+import wad.repository.IlmiantoRepository;
 import wad.repository.KommenttiRepository;
 import wad.repository.LinkkiRepository;
 import wad.repository.LogiRepository;
@@ -32,6 +34,8 @@ public class SivuService {
     private KommenttiRepository kommenttiRepository;
     @Autowired
     private LogiRepository logiRepository;
+    @Autowired
+    private IlmiantoRepository ilmiantoRepository;
 
     public void luoSivu(String name, String ip) {
         Logi log = new Logi();
@@ -103,6 +107,20 @@ public class SivuService {
         Logi log = new Logi();
         String logi = ip + " asetti sivun " + nimi + " näkyville";
         log.setLogi(logi);
+        logiRepository.save(log);
+    }
+
+    public void ilmianna(String nimi, String ip) {
+        Sivu s = sivuRepository.findOne(nimi);
+
+        Ilmianto ilmianto = new Ilmianto();
+        ilmianto.setSivu(sivuRepository.findOne(nimi), ip);
+        s.setIlmianto(ilmianto);
+        ilmiantoRepository.save(ilmianto);
+        Logi log = new Logi();
+        String logi = ip + " ilmiantoi sivun " + nimi;
+        log.setLogi(logi);
+        sivuRepository.save(s);
         logiRepository.save(log);
     }
 

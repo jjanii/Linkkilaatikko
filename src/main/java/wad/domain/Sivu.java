@@ -6,13 +6,16 @@
 package wad.domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -31,7 +34,10 @@ public class Sivu {
     @JoinColumn(name = "sivu_kommentti_id")
     private List<Kommentti> kommentit;
     private boolean nakyvilla = true;
-
+    @OneToOne(fetch=FetchType.EAGER , cascade=CascadeType.ALL, orphanRemoval=true)
+    @JoinColumn(name = "sivu_ilmianto_id")
+    private Ilmianto ilmianto = null;
+    
     public void setUrl(String nimi) {
         this.url = nimi;
     }
@@ -87,6 +93,15 @@ public class Sivu {
 
     public String getUrl() {
         return this.url;
+    }
+    
+    public void setIlmianto(Ilmianto ilmianto) {
+        this.ilmianto = ilmianto;
+    }
+    
+    public Ilmianto getIlmianto() {
+   
+        return this.ilmianto;
     }
 
 }

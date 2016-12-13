@@ -1,3 +1,4 @@
+/Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/domain/Ilmianto.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/domain/Logi.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/domain/Sivu.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/config/SecurityConfiguration.java
@@ -10,5 +11,7 @@
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/wepaApplication.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/repository/LinkkiRepository.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/domain/Kommentti.java
+/Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/service/AdminService.java
+/Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/repository/IlmiantoRepository.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/controller/AdminController.java
 /Users/Jani/NetBeansProjects/wepaprojekti/src/main/java/wad/repository/SivuRepository.java

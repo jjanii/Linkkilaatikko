@@ -17,7 +17,6 @@ import wad.domain.Kommentti;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-
 public class SivuControllerTest extends FluentTest {
 
     public WebDriver webDriver = new HtmlUnitDriver();
@@ -120,6 +119,26 @@ public class SivuControllerTest extends FluentTest {
 
     }
 
+    @Test
+    public void sivunIlmiantoToimii() throws Throwable {
+        goTo("http://localhost:" + port + "/testisivu");
+        click("input[value='Ilmianna sivu']");
+        assertThat(pageSource()).contains("Sivu testisivu ilmiannettu");
+        goTo("http://localhost:" + port + "/admin/ilmiannot");
+        syotaTiedot("admin", "admin");
+        assertThat(pageSource()).contains("testisivu");
+    }
+
+    @Test
+    public void sivunVoiIlmiantaaVainKerran() throws Throwable {
+       
+        goTo("http://localhost:" + port + "/testisivu2");
+        click("input[value='Ilmianna sivu']");
+        assertThat(pageSource()).contains("Sivu testisivu2 ilmiannettu");
+        click("input[value='Ilmianna sivu']");
+        assertThat(pageSource()).contains("Sivu on jo ilmiannettu");
+    }
+
     public Linkki lisaaLinkki() {
         goTo("http://localhost:" + port + "/testisivu");
 
@@ -156,7 +175,7 @@ public class SivuControllerTest extends FluentTest {
     }
 
     @Test
-    public void tyhjaNimimerkkiTaiKommenttiEiLisaaKommenttia() {
+    public void tyhjaNimimerkkiTaiKommenttiEiLisaaKommenttia() throws Throwable {
         goTo("http://localhost:" + port + "/testisivu");
         String kommentti = UUID.randomUUID().toString().substring(0, 30);
         fill("input[name=kommentti]").with(kommentti);
