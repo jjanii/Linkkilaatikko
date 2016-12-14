@@ -1,7 +1,7 @@
 # Janin linkkilaatikko
 
 ##Sovellus: https://afternoon-inlet-85980.herokuapp.com/
-##Travis: https://travis-ci.org/jjanii/wepa
+##Travis:  ![Travis status](https://api.travis-ci.org/jjanii/wepa.svg?branch=master) https://travis-ci.org/jjanii/wepa
 
 ### Idea 
 Sovellukseni ideana on, että kuka tahansa voi luoda oman "linkkilaatikon" jonne voi lisätä talteen hyödyllisiä linkkejä esimerkiksi tärkeää opiskelumateriaalia. Jokaisen linkkilaatikon voi luoda vain kerran samalla nimellä. 
