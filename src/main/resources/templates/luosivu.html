@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title th:text="${name}">Sivun luonti</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css" />
+        <style>
+            .custom-restricted {
+                height: 250px;
+                width: 800px;
+                border: 1px solid gray;
+                border-radius: 4px;
+            }
+
+            .piilotus-vika {
+                margin-left: 10px;
+            } 
+
+            .flex {
+                display: flex;
+                justify-content: center;
+            }
+
+            .pienennys {
+                font-size: 90%;
+                padding: 2px 6px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h2>Aseta sivulle salasana</h2>
+
+            <form th:action="@{/{nimi}/setup(nimi=${name})}" th:method="POST">
+                <input type="password" class="pure-input-rounded" placeholder="Sivun salasana" name="salasana"></input>
+                <input type="submit" class="pure-button pienennys" value="Tallenna"></input>
+            </form>
+
+
+            <a href="/">Takaisin etusivulle</a> 
+
+        </center>
+
+    </body>
+</html>

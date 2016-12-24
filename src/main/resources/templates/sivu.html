@@ -33,9 +33,10 @@
             <h2>Linkkisi</h2>
 
             <section th:each="linkki : ${linkit}">
-                <form th:action="@{/{nimi}/delete/{linkki}(linkki=${linkki.id}, nimi=${name})}" th:method="DELETE">
+                <form class="pure-form" th:action="@{/{nimi}/delete/{linkki}(linkki=${linkki.id}, nimi=${name})}" th:method="DELETE">
                     <a th:href="${linkki.url}"><span class="pure-menu-link pure-menu-heading" th:text="${linkki.nimi}">nimi</span></a>
                     <span th:text="${linkki.kuvaus}">kuvaus</span>
+                    <input type="password" class="pure-input-rounded" name="salis" placeholder="Salasana"></input>
                     <input type="submit" class="pure-button pienennys" value="x"></input>
                 </form>
             </section>
@@ -46,6 +47,8 @@
                 <input type="text" class="pure-input-rounded" placeholder="Linkin nimi" name="nimi1"></input>
                 <input type="text" class="pure-input-rounded" placeholder="Linkin url (http://...)" name="url"></input>
                 <input type="text" class="pure-input-rounded" placeholder="Kuvaus" name="kuvaus"></input>
+                <input type="password" class="pure-input-rounded" name="salis" placeholder="Salasana"></input>
+
                 <input type="submit" class="pure-button pure-button-active" value="Lisää"></input>
             </form>
 
@@ -78,8 +81,9 @@
             <span th:if="${message != null}" th:text="${message}"></span>
             <br />
             <br />
+
             <a href="/">Takaisin etusivulle</a> 
-           
+
         </center>
 
     </body>

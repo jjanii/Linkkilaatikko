@@ -30,14 +30,14 @@ public class SivuController {
     private SivuService sivuService;
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String sivu(Model model, @PathVariable String name, HttpServletRequest request) {
+    public String sivu(Model model, @PathVariable String name) {
         if (name.equals("admin")) {
             return "redirect:/admin/index";
         }
 
         if (sivuRepository.findOne(name) == null) {
-            sivuService.luoSivu(name, request.getRemoteAddr());
-            return "redirect:/" + name;
+            return "redirect:/" + name + "/asetasalasana";
+
         }
 
         model.addAttribute("linkit", sivuRepository.findOne(name).getLinkit());
@@ -47,9 +47,21 @@ public class SivuController {
         return "sivu";
     }
 
+    @RequestMapping(value = "/{nimi}/setup", method = RequestMethod.POST)
+    public String asetaSalasana(@PathVariable String nimi, @RequestParam String salasana, HttpServletRequest request) {
+        sivuService.luoSivu(nimi, request.getRemoteAddr(), salasana);
+        return "redirect:/" + nimi;
+    }
+
+    @RequestMapping(value = "/{nimi}/asetasalasana", method = RequestMethod.GET)
+    public String salasanaSivu(@PathVariable String nimi , Model model) {
+        model.addAttribute("name", nimi);
+        return "luosivu";
+    }
+
     @RequestMapping(value = "/{nimi}/add", method = RequestMethod.POST)
-    public String post(@PathVariable String nimi, @RequestParam String url, HttpServletRequest request, @RequestParam String kuvaus, @RequestParam String nimi1) {
-        sivuService.luoLinkki(nimi, url, kuvaus, request.getRemoteAddr(), nimi1);
+    public String post(@PathVariable String nimi, @RequestParam String salis, @RequestParam String url, HttpServletRequest request, @RequestParam String kuvaus, @RequestParam String nimi1) {
+        sivuService.luoLinkki(nimi, url, kuvaus, request.getRemoteAddr(), nimi1, salis);
         return "redirect:/" + nimi;
     }
 
@@ -60,8 +72,8 @@ public class SivuController {
     }
 
     @RequestMapping(value = "/{nimi}/delete/{linkki}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable String nimi, @PathVariable Long linkki, HttpServletRequest request) {
-        sivuService.poistaLinkki(nimi, linkki, request.getRemoteAddr());
+    public String delete(@PathVariable String nimi, @PathVariable Long linkki, HttpServletRequest request, @RequestParam String salis) {
+        sivuService.poistaLinkki(nimi, linkki, request.getRemoteAddr(), salis);
         return "redirect:/" + nimi;
     }
 

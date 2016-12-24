@@ -37,32 +37,35 @@ public class SivuService {
     @Autowired
     private IlmiantoRepository ilmiantoRepository;
 
-    public void luoSivu(String name, String ip) {
+    public void luoSivu(String name, String ip, String salasana) {
         Logi log = new Logi();
         String logi = ip + " loi uuden sivun " + name;
         log.setLogi(logi);
         logiRepository.save(log);
         Sivu sivu = new Sivu();
-
+        sivu.setSalasana(salasana);
         sivu.setName(name);
         sivu.setUrl(name);
         sivuRepository.save(sivu);
     }
 
-    public void luoLinkki(String nimi, String url, String kuvaus, String ip, String nimi1) {
-        if (!nimi1.isEmpty() && isValidUrl(url)) {
-            Linkki link = new Linkki();
-            link.setUrl(url);
-            link.setKuvaus(kuvaus);
-            link.setNimi(nimi1);
-            link.setSivu(sivuRepository.findOne(nimi));
+    public void luoLinkki(String nimi, String url, String kuvaus, String ip, String nimi1, String salasana) {
 
-            sivuRepository.findOne(nimi).lisaaLinkki(link);
-            linkkiRepository.save(link);
-            Logi log = new Logi();
-            String logi = ip + " lisäsi linkin " + url + " sivulle " + nimi;
-            log.setLogi(logi);
-            logiRepository.save(log);
+        if (!nimi1.isEmpty() && isValidUrl(url)) {
+            if (sivuRepository.findOne(nimi).getSalasana().equals(salasana)) {
+                Linkki link = new Linkki();
+                link.setUrl(url);
+                link.setKuvaus(kuvaus);
+                link.setNimi(nimi1);
+                link.setSivu(sivuRepository.findOne(nimi));
+
+                sivuRepository.findOne(nimi).lisaaLinkki(link);
+                linkkiRepository.save(link);
+                Logi log = new Logi();
+                String logi = ip + " lisäsi linkin " + url + " sivulle " + nimi;
+                log.setLogi(logi);
+                logiRepository.save(log);
+            }
         }
     }
 
@@ -82,12 +85,14 @@ public class SivuService {
         }
     }
 
-    public void poistaLinkki(String nimi, Long linkinId, String ip) {
-        Logi log = new Logi();
-        String logi = ip + " poisti linkin " + linkkiRepository.findOne(linkinId).getUrl() + " sivulta " + nimi;
-        log.setLogi(logi);
-        logiRepository.save(log);
-        linkkiRepository.delete(linkinId);
+    public void poistaLinkki(String nimi, Long linkinId, String ip, String salasana) {
+        if (sivuRepository.findOne(nimi).getSalasana().equals(salasana)) {
+            Logi log = new Logi();
+            String logi = ip + " poisti linkin " + linkkiRepository.findOne(linkinId).getUrl() + " sivulta " + nimi;
+            log.setLogi(logi);
+            logiRepository.save(log);
+            linkkiRepository.delete(linkinId);
+        }
     }
 
     public void piilotaEtusivulta(String nimi, String ip) {

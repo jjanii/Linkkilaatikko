@@ -26,6 +26,7 @@ public class Sivu {
 
     @Id
     private String url;
+    private String salasana;
     private String nimi;
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "sivu_linkki_id")
@@ -100,8 +101,15 @@ public class Sivu {
     }
     
     public Ilmianto getIlmianto() {
-   
         return this.ilmianto;
+    }
+    
+    public void setSalasana(String salasana) {
+        this.salasana = salasana;
+    }
+    
+    public String getSalasana() {
+        return this.salasana;
     }
 
 }
