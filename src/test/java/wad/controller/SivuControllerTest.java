@@ -4,6 +4,7 @@ import java.util.UUID;
 import org.assertj.core.api.AbstractBooleanAssert;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.fluentlenium.adapter.FluentTest;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -41,8 +42,13 @@ public class SivuControllerTest extends FluentTest {
 
     @Test
     public void sivunOtsikkoOikein() throws Throwable {
+
         String sivunnimi = UUID.randomUUID().toString().substring(0, 10);
+        goTo("http://localhost:" + port + "/" + sivunnimi + "/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
         goTo("http://localhost:" + port + "/" + sivunnimi);
+
         AbstractBooleanAssert<?> assertThat = assertThat(webDriver.getTitle().equals(sivunnimi));
     }
 
@@ -51,6 +57,9 @@ public class SivuControllerTest extends FluentTest {
         Linkki l = lisaaLinkki();
         Kommentti k = lisaaKommentti();
 
+        goTo("http://localhost:" + port + "/testisivu/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
         goTo("http://localhost:" + port + "/testisivu");
 
         assertThat(pageSource()).contains(k.getKommentti());
@@ -59,6 +68,9 @@ public class SivuControllerTest extends FluentTest {
 
     @Test
     public void viallinenLinkkiEiLisaaLinkkia() throws Throwable {
+        goTo("http://localhost:" + port + "/testisivu/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
         goTo("http://localhost:" + port + "/testisivu");
 
         Linkki linkki = new Linkki();
@@ -69,6 +81,7 @@ public class SivuControllerTest extends FluentTest {
         fill("input[name=kuvaus]").with(linkki.getKuvaus());
         fill("input[name=nimi1]").with(linkki.getNimi());
         fill("input[name=url]").with(linkki.getUrl());
+        fill("input[name=salis]").with("testi");
         click("input[value='Lisää']");
 
         assertThat(pageSource()).doesNotContain(linkki.getKuvaus());
@@ -102,6 +115,9 @@ public class SivuControllerTest extends FluentTest {
 
     @Test
     public void sivunPiilotusJaNayttaminenToimii() throws Throwable {
+        goTo("http://localhost:" + port + "/testisivu/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
 
         goTo("http://localhost:" + port + "/testisivu");
         goTo("http://localhost:" + port + "/");
@@ -121,6 +137,9 @@ public class SivuControllerTest extends FluentTest {
 
     @Test
     public void sivunIlmiantoToimii() throws Throwable {
+        goTo("http://localhost:" + port + "/testisivu/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
         goTo("http://localhost:" + port + "/testisivu");
         click("input[value='Ilmianna sivu']");
         assertThat(pageSource()).contains("Sivu testisivu ilmiannettu");
@@ -131,7 +150,10 @@ public class SivuControllerTest extends FluentTest {
 
     @Test
     public void sivunVoiIlmiantaaVainKerran() throws Throwable {
-       
+
+        goTo("http://localhost:" + port + "/testisivu2/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
         goTo("http://localhost:" + port + "/testisivu2");
         click("input[value='Ilmianna sivu']");
         assertThat(pageSource()).contains("Sivu testisivu2 ilmiannettu");
@@ -140,6 +162,9 @@ public class SivuControllerTest extends FluentTest {
     }
 
     public Linkki lisaaLinkki() {
+        goTo("http://localhost:" + port + "/testisivu/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
         goTo("http://localhost:" + port + "/testisivu");
 
         Linkki linkki = new Linkki();
@@ -150,6 +175,7 @@ public class SivuControllerTest extends FluentTest {
         fill("input[name=kuvaus]").with(linkki.getKuvaus());
         fill("input[name=nimi1]").with(linkki.getNimi());
         fill("input[name=url]").with(linkki.getUrl());
+        fill("input[name=salis]").with("testi");
         click("input[value='Lisää']");
 
         assertThat(pageSource()).contains(linkki.getKuvaus());
@@ -159,6 +185,10 @@ public class SivuControllerTest extends FluentTest {
     }
 
     public Kommentti lisaaKommentti() {
+
+        goTo("http://localhost:" + port + "/testisivu/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
 
         goTo("http://localhost:" + port + "/testisivu");
 
@@ -176,7 +206,11 @@ public class SivuControllerTest extends FluentTest {
 
     @Test
     public void tyhjaNimimerkkiTaiKommenttiEiLisaaKommenttia() throws Throwable {
+        goTo("http://localhost:" + port + "/testisivu/asetasalasana");
+        fill("input[name=salasana]").with("testi");
+        click("input[value='Tallenna']");
         goTo("http://localhost:" + port + "/testisivu");
+
         String kommentti = UUID.randomUUID().toString().substring(0, 30);
         fill("input[name=kommentti]").with(kommentti);
         fill("input[name=nimimerkki]").with("nick");
